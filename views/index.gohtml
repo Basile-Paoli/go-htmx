@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="htmx.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Todos</h1>
+<div id="todos">
+    {{ range .Todos }}
+        {{ template "todo" . }}
+    {{ end }}
+</div>
+
+{{ template "error" .}}
+
+<div id="form">
+    {{ template "form" }}
+</div>
+
+</body>
+</html>
+
+{{ define "form" }}
+    <form hx-post="/" hx-swap="beforeend" hx-target="#todos">
+        <input type="text" name="name" autofocus>
+        <button type="submit">Ajouter</button>
+    </form>
+{{ end }}
+
+{{ define "oob-form" }}
+    <div hx-swap-oob="true" id="form">
+        {{ template "form" .}}
+    </div>
+{{ end }}
+
+{{ define "error" }}
+    <div class=" {{ if .Error }} error {{ end }}" id="form-error" hx-swap-oob="true">
+        {{ .Error }}
+    </div>
+{{ end }}
+
+{{ define "form-error" }}
+    {{ template "error" .}}
+    {{ template "oob-form" }}
+{{ end }}

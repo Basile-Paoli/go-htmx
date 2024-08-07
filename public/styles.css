@@ -1,0 +1,41 @@
+.todo-card {
+    box-shadow: 0 1px 3px -1px #000;
+    border: 1px solid #0003;
+    border-radius: 10px;
+    padding: 12px;
+    min-width: 80px;
+    width: fit-content;
+}
+
+#todos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.error {
+    color: red;
+}
+
+svg.delete {
+    margin-top: 8px;
+    width: 20px;
+    height: 20px;
+}
+
+button {
+    all: unset;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-end {
+    justify-content: end;
+}
