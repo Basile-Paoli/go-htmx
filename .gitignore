@@ -1,2 +1,6 @@
 .idea
 tmp
+react/node_modules
+react/tmp
+react/dist
+.air.toml

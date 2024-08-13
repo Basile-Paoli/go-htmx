@@ -12,6 +12,7 @@ func main() {
 		Views: engine,
 	})
 	app.Static("/", "public/")
+	app.Static("/", "react/dist/")
 
 	UseRoutes(app)
 

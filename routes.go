@@ -8,6 +8,9 @@ import (
 
 func UseRoutes(app *fiber.App) {
 	app.Get("/", index)
+	app.Get("/react", func(ctx *fiber.Ctx) error {
+		return ctx.Render("react", fiber.Map{})
+	})
 	app.Post("/", postTodo)
 	app.Delete("/", deleteTodo)
 }
