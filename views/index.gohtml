@@ -20,6 +20,16 @@
     {{ template "form" }}
 </div>
 
+<br/>
+<script>
+    let count = 0;
+    function newCount() {
+        return count++;
+    }
+</script>
+<button hx-get="/count" hx-swap="afterend" hx-vals="js:{count: newCount()}">
+    Add counter
+</button>
 </body>
 </html>
 

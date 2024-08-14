@@ -2,10 +2,11 @@ import React, {useState} from "react";
 import {createRoot} from "react-dom/client";
 
 function App() {
-    const [count, setCount] = useState(0);
+    const initialCount = (window as any).countProps?.initialCount ?? 0;
+    const [count, setCount] = useState(initialCount);
     return (
         <div>
-            <p>Test: {count}</p>
+            <p>Count: {count}</p>
             <button onClick={() => setCount(count + 1)}>Increment</button>
         </div>
     );

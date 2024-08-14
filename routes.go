@@ -9,7 +9,16 @@ import (
 func UseRoutes(app *fiber.App) {
 	app.Get("/", index)
 	app.Get("/react", func(ctx *fiber.Ctx) error {
-		return ctx.Render("react", fiber.Map{})
+		return ctx.Render("react", fiber.Map{"Count": 2})
+	})
+	app.Get("/count", func(ctx *fiber.Ctx) error {
+		count, err := strconv.Atoi(ctx.Query("count"))
+		if err != nil {
+			return ctx.Render("error", fiber.Map{
+				"Error": err.Error(),
+			})
+		}
+		return ctx.Render("count", fiber.Map{"Count": count})
 	})
 	app.Post("/", postTodo)
 	app.Delete("/", deleteTodo)

@@ -1,4 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Count</title>
+    <script src="htmx.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<div id="count"></div>
-<script src="/count.js"></script>
+{{ template "count" . }}
 </body>
+</html>
+
+
+{{ define "count" }}
+    <div>
+        <div id="count"></div>
+        {{if .Count}}
+            <script>
+                window.countProps = {
+                    initialCount: {{.Count}}
+                }
+            </script>
+        {{end}}
+        <script src="/count.js"></script>
+        <button id="deleteButton" onclick="this.parentElement.remove()">Delete counter</button>
+    </div>
+
+{{end}}
